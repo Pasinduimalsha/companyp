@@ -30,7 +30,7 @@
         }
 
         .sidebar a:hover {
-            background-color:#72c02c;
+            background-color: #575757;
             color: #f1f1f1;
         }
 
@@ -51,12 +51,12 @@
         }
 
         .btn-custom {
-            background-color: #72c02c;
+            background-color: #007bff;
             color: white;
         }
 
         .btn-custom:hover {
-            background-color: #72c02c;
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -68,7 +68,7 @@
         <a href="#stock" data-toggle="collapse">Stock Management</a>
         <a href="#invoice" data-toggle="collapse">Invoice Management</a>
         <a href="#booking" data-toggle="collapse">Booking Management</a>
-        <a href="{{ url_for('dashboard_admin') }}">Logout</a>
+        <a href="logout.html">Logout</a>
     </div>
 
     <!-- Main Content -->
@@ -85,7 +85,6 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Item ID</th>
                                     <th>Item Name</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
@@ -95,31 +94,20 @@
                             </thead>
                             <tbody>
                                 <!-- Dynamic content here (list of stock items) -->
-                                {% for stocks in stock %}
                                 <tr>
-                                    <td>{{stocks [0]}}</td>
-                                    <td>{{stocks [1]}}</td>
-                                    <td>{{stocks [2]}}</td>
-                                    <td>{{stocks [3]}}</td>
-                                    <td>{{stocks [4]}}</td>
+                                    <td>Item 1</td>
+                                    <td>100</td>
+                                    <td>$10.00</td>
+                                    <td>10</td>
                                     <td>
-                                        
-                                        <a href="{{ url_for('update_stock', id=stocks[0]) }}" class="btn btn-primary btn-sm">Update</a>
-                                        <a href="{{ url_for('delete_stock', id=stocks[0]) }}" class="btn btn-danger btn-sm">Delete</a>
-                                        
-                                      
+                                        <button class="btn btn-primary btn-sm">Update</button>
+                                        <button class="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>
-                                {% endfor %}
                                 <!-- Repeat for other stock items -->
                             </tbody>
-                            <!-- Button to Open the Modal -->
-
                         </table>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStockModal">
-                            Add Stock
-                        </button>
-                        
+                        <button class="btn btn-custom btn-sm" data-toggle="modal" data-target="#addStockModal">Add Stock</button>
                     </div>
                 </div>
             </div>
@@ -156,91 +144,76 @@
                 </div>
             </div>
 
-           <!-- Booking Management Section -->
-<!-- Booking Management Section -->
-<div id="booking" class="collapse">
-    <h2>Manage Bookings</h2>
-    <div class="card">
-        <div class="card-body">
-            <h4>Booking List</h4>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Purpose</th>
-                        <th>Mobile Number</th>
-                        <th>Department</th>
-                        <th>Appointment Date</th>
-                        <th>Appointment Time</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for booking in booking %}
-                    <tr>
-                        <td>{{ booking[0] }}</td>
-                        <td>{{ booking[1] }}</td>
-                        <td>{{ booking[2] }}</td>
-                        <td>{{ booking[3] }}</td>
-                        <td>{{ booking[4] }}</td>
-                        <td>{{ booking[5] }}</td>
-                        <td>{{ booking[6] }}</td>
-                        <td>{{ booking[7] }}</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">Update</button>
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    
-                </tbody>
-            </table>
+            <!-- Booking Management Section -->
+            <div id="booking" class="collapse">
+                <h2>Manage Bookings</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Booking List</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Contact</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Dynamic content here (list of bookings) -->
+                                <tr>
+                                    <td>Jane Doe</td>
+                                    <td>1234567890</td>
+                                    <td>Pending</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm">Update</button>
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </td>
+                                </tr>
+                                <!-- Repeat for other bookings -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
 
-
-<!-- Modal for Add Stock -->
-<div class="modal fade" id="addStockModal" tabindex="-1" aria-labelledby="addStockModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addStockModalLabel">Add New Stock</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ url_for('add_stock') }}">
-                    <div class="form-group">
-                        <label for="item-name">Item Name</label>
-                        <input type="text" class="form-control" id="item-name" name="item-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <input type="number" class="form-control" id="quantity" name="quantity" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Price</label>
-                        <input type="number" class="form-control" id="price" name="price" step="0.01" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reorder-level">Reorder Level</label>
-                        <input type="number" class="form-control" id="reorder-level" name="reorder-level" required>
-                    </div>
-                    <button type="submit" class="btn btn-custom btn-block">Add Stock</button>
-                </form>
+    <!-- Modal for Add Stock -->
+    <div class="modal fade" id="addStockModal" tabindex="-1" aria-labelledby="addStockModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStockModalLabel">Add New Stock</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="item-name">Item Name</label>
+                            <input type="text" class="form-control" id="item-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" class="form-control" id="quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" id="price" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reorder-level">Reorder Level</label>
+                            <input type="number" class="form-control" id="reorder-level" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom btn-block">Add Stock</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-
 
     <!-- Scripts for Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
