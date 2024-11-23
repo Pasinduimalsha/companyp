@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html> 
 <head>
-	<title> Unity Hospital | Appointment </title>
+<title> Unity Hospital | Registration </title>
 
- <!-- Web Fonts -->
+		 <!-- Web Fonts -->
  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
 
  <!-- CSS Global Compulsory -->
@@ -14,42 +14,37 @@
  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
-		<!-- CSS Implementing Plugins -->
-		
-<link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons-pro/styles.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+ <!-- CSS Implementing Plugins -->
+ <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons-pro/styles.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css') }}">
 
-
-	
  <!-- CSS Customization -->
  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 
 </head>
 
 <body>
-	<div class="wrapper">
-	<!--=== Header v1 ===-->
-	<div class="header-v1">
-	<!-- Topbar -->
-	<div class="topbar-v1">
-	<div class="container">
-	<div class="row">
-	<div class="col-md-6">
-		<ul class="list-inline top-v1-contacts">
-		<li>
-		<i class="fa fa-envelope"></i> Email: unityhospital@gmail.com
-		</li>
-		<li>
-		<i class="fa fa-phone"></i> Contact no : 88666 00555
-		</li>
-		</ul>
-	</div>
-	</div>
-	</div>
-	</div>
+		<div class="wrapper">
+		<!--=== Header v1 ===-->
+		<div class="header-v1">
+		<!-- Topbar -->
+		<div class="topbar-v1">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-6">
+			<ul class="list-inline top-v1-contacts">
+			<li>
+			<i class="fa fa-envelope"></i> Email: unityhospital@gmail.com
+			</li>
+			<li>
+			<i class="fa fa-phone"></i> Contact no : 88666 00555
+			</li>
+			</ul>
+		</div>
+		</div>
+		</div>
+		</div>
 
 <!-- End Topbar -->
 
@@ -85,7 +80,6 @@
 							<a href="{{url_for('home')}}" >
 							HOME
 							</a>
-							</li>
 							<!-- End Home-->
 			
 							<!-- About Us -->
@@ -161,128 +155,67 @@
 				<!-- End Navbar -->
 
 
+	<!-- Image title -->
 
-	<!--=== Heading ===-->
-	<div class="container content">
-	<div class="row " style="margin-bottom: 30px;">
-	<div class="col-md-9 " style="margin-bottom: 30px;">
-	<div class="headline"><h2>Appointment Form</h2></div>
+	<div style="text-align: center; margin-top: 50px;">
+	<h2>REGISTER</h2>
+	</div>
 
-				<!--=== APPOINTMENT FORM ===-->
-				<form onsubmit="showMsg(0);return false;" method="post" class="sky-form sky-changes-3">
-				<fieldset>
+	<!-- End title  -->
+
+
+				<!--=== Content Part ===-->
+				<div class="container content">
 				<div class="row">
-				<section class="col col-6">
-				<label class="label">Name</label>
-				<label class="input">
-				<i class="icon-append fa fa-user"></i>
-				<input type="text" name="name" id="name" required="">
-				</label>
-				</section>
-				<section class="col col-6">
-				<label class="label">E-mail</label>
-				<label class="input">
-				<i class="icon-append fa fa-envelope-o"></i>
-				<input type="email" name="email" id="email" required="">
-				</label>
-				</section>
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+				<form onsubmit="showMsg(0);return false;" method="post" class="reg-page">
+				<div class="reg-header">
+				<h2>Register a new account</h2>
+				<p>Already Signed Up? Click <a href="login.html" class="color-green">Sign In</a> to login your account.</p>
 				</div>
 
-				<section>
-				<label class="label">Purpose Of Appointment</label>
-				<label class="input">
-				<i class="icon-append fa fa-tag"></i>
-				<input type="text" name="subject" required="">
-				</label>
-				</section>
+				<label>First Name</label>
+				<input type="text" class="form-control " style="margin-bottom: 20px;" required="">
 
-				<section>
-				<label class="label">Mobile Number</label>
-				<label class="input">
-				<i class="icon-append fa fa-phone"></i>
-				<input type="text" name="number" id="number" required="">
-				</label>
-				</section> 	
+				<label>Last Name</label>
+				<input type="text" class="form-control " style="margin-bottom: 20px;" required="">
 
-				<section>
-				<label class="select">
-				<select name="Department" required="">
-				<option value="" selected="" disabled="">Select Department</option>
-				<option>Cardiology</option>
-				<option>Dermatology and Cosmetology</option>
-				<option>General Surgery</option>
-				<option>Health Checkup Packages</option>
-				<option>Neurology</option>
-				</select>
-				<i></i>
-				</label>
-				</section>
+				<label>Email Address <span class="color-red">*</span></label>
+				<input type="text" class="form-control " style="margin-bottom: 20px;" required="">
+
 				<div class="row">
-				<section class="col col-6">
-				<label class="date">Select Date</label>
-				<label class="input">
-				<i class="icon-append fa fa-calendar"></i>
-				<input type="date" required="">
-				</label>
-				</section>
-				<section class="col col-6">
-				<label class="time">Select Time</label>
-				<label class="select">
-				<select name="Time" required="">
-				<option value="" selected="" disabled="">Select Time</option>
-				<option>8 AM - 10 AM</option>
-				<option>10 AM - 12 PM</option>
-				<option>12 PM - 2 PM</option>
-				<option>2 PM - 4 PM</option>
-				<option>4 PM - 6 PM</option>
-				<option>6 PM - 8 PM</option>
-				<option>8 PM - 10 PM</option>
-				</select>
-				<i></i>
-				</label>
-				</section>
+				<div class="col-sm-6">
+				<label>Password <span class="color-red">*</span></label>
+				<input type="password" class="form-control " style="margin-bottom: 20px;" required="">
+				</div>
+				<div class="col-sm-6">
+				<label>Confirm Password <span class="color-red">*</span></label>
+				<input type="password" class="form-control " style="margin-bottom: 20px;" required="">
+				</div>
 				</div>
 				<div class="alert alert-success successBox">
 				<button type="button" class="close" onclick="showMsg(1);">×</button>
-				<strong style="font-size: 16px;">Congratulations!</strong><span class="alert-link"> Your Appointment has been booked successfully.</span>
+				<strong style="font-size: 16px;">Congratulations!</strong><span class="alert-link"> You Have Successfully Registered.</span>
 				</div>
 
-				</fieldset>
+				<hr>
 
-				<footer>
-				<button type="submit" class="btn-u">Send message</button>
-				</footer>
-
-
+				<div class="row">
+				<div class="col-lg-6 checkbox">
+				<label>
+				<input type="checkbox" required="">
+				I read <a href="#" class="color-green">Terms and Conditions</a>
+				</label>
+				</div>
+				<div class="col-lg-6 text-right">
+				<button class="btn-u" type="submit">Register</button>
+				</div>
+				</div>
 				</form>
-				</div><!--/col-md-9-->
-
-				<!-- side part of appointment -->
-						<div class="col-md-3" style="margin-top: 56px;">
-						<!-- Address -->
-						<div class="headline"><h2>Appointment Notes</h2></div>
-						<p> You Only Can Book Your Appointment Between <strong>8 AM to 10 PM.</strong> </p>
-						<p> In Other Times You Can Call Our Ambulance Which Is Available 24/7. </p>
-
-						<!-- Business Hours -->
-						<div class="headline" style="margin-top: 20px;"><h2>Business Hours</h2></div>
-						<ul class="list-unstyled " style="margin-bottom: 30px;">
-						<li><strong>Monday-Saturday:</strong> 24/7 Available.</li>
-						<li><strong>Sunday:</strong> 4 AM to 11 PM.</li>
-						</ul>
-
-						<!-- Why choose us? -->
-						<div class="headline"><h2>Why Choose Us?</h2></div>
-						<p>All healthcare facilities can be accessed here under one roof, making UNITY Hospital a one point contact for all your healthcare needs.</p>
-						<ul class="list-unstyled">
-						<li><i class="fa fa-check color-green"></i> 24/7 Ambulance Support.</li>
-						<li><i class="fa fa-check color-green"></i> Eminent and Experienced Doctors.</li>
-						<li><i class="fa fa-check color-green"></i> Multiple Options For Treatment.</li>
-						</ul>
-						</div><!--/col-md-3-->
-						</div><!--/row-->
-						</div><!--/container-->
-
+				</div>
+				</div>
+				</div><!--/container-->
+				<!--=== End Content Part ===-->
 
 		<!--=== Footer ===-->
 		<div class="footer-v1">
