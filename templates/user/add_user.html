@@ -11,7 +11,7 @@
         <h2 class="mb-4">User Data</h2>
         
         <!-- Form for adding user data -->
-        <form id="userForm" method="POST" action="{{ url_for('add_user_route') }}">
+        <form id="userForm" method="POST" action="/add_user">
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label for="user_name">User Name</label>
@@ -23,51 +23,15 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="phone_no">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone_no" name="phone_no" required
-                    pattern="^0[0-9]{9}$" title="Please enter a valid 10-digit phone number"><!--Validation-->
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="phone_no">Email</label>
-                    <input type="tel" class="form-control" id="phone_no" name="email" required>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="phone_no">NIC Number</label>
-                    <input type="tel" class="form-control" id="phone_no" name="nic" required>
+                    <input type="tel" class="form-control" id="phone_no" name="phone_no" required>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="comment">Comment</label>
                     <input type="text" class="form-control" id="comment" name="comment">
                 </div>
             </div>
-            
             <button type="submit" class="btn btn-primary">Add User</button>
-            {% if session.role == 'SuperAdmin' %}
-            <a href="{{ url_for('superadmin_dashboard1') }}" class="btn btn-secondary">Move Dashboard</a>
-            {% elif session.role == 'Admin' %}
-            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Move Dashboard</a>
-            {% elif session.role == 'User' %}
-            <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary">Move Dashboard</a>
-            {% elif session.role == 'cashier' %}
-            <a href="{{ url_for('cashier_dashboard') }}" class="btn btn-secondary">Move Dashboard</a>
-            
-            {% else %}
-            <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to Home</a>
-            {% endif %}
-
         </form>
-        <script>
-            document.getElementById("userForm").addEventListener("submit", function(event){
-                const phoneInput=document.getElementById("phone_no")
-                const phoneValue=phoneInput.value;
-
-                const phonePattern="^0[0-9]{9}$";
-
-                
-                if (!phonePattern.test(phoneValue))
-                   alert("Please enter a valid 10-digit phone number.");
-                   event.preventDefault();
-            })
-        </script>
 
        
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

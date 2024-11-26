@@ -2,7 +2,7 @@ from flask_mysqldb import MySQL
 
 mysql=None
 #sele
-'''''
+
 #insert user
 # add_user.py
 def add_user(data):
@@ -21,13 +21,12 @@ def add_user(data):
     cur.close()
     
     return 
-'''
 
 
 #Function to retrive a
 def get_users():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM users")
+    cur.execute("SELECT * FROM users_data")
     rows = cur.fetchall()
     cur.close()
     return rows
