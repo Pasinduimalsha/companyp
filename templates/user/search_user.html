@@ -31,12 +31,8 @@
                         <label for="phone_no_search" class="form-label">Phone Number</label>
                         <input type="tel" class="form-control" id="phone_no_search" name="phone_no_search" required title="Please enter a valid 10-digit phone number" placeholder="Enter phone number">
                     </div>
-                    <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary mr-3">Search User</button>
-                    <a href="{{ url_for('add_invoice_form') }}" class="btn btn-primary">Invoice</a> 
-                    </div>
+                    <button type="submit" class="btn btn-primary">Search User</button>
                 </form>
-               
             </div>
         </div>
 
@@ -64,19 +60,15 @@
                                 <td>{{ user[2] }}</td>
                                 <td>{{ user[3] }}</td>
                                 <td>{{ user[4] }}</td>
+                                <td>{{ user[5] }}</td>
                                 <td>{{ user[7] }}</td>
                                 <td>{{ user[8] }}</td>
-                               
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
-                    
-                    
                 </div>
-                
             </div>
-            
         {% else %}
             {% if request.method == 'POST' %}
                 <div class="alert alert-warning mt-4" role="alert">
@@ -84,9 +76,8 @@
                 </div>
             {% endif %}
         {% endif %}
-        <a href="{{ url_for('cashier_dashboard') }}" class="btn btn-secondary">Move Dashboard</a>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
