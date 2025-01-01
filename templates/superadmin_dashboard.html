@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAdmin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+        .card-custom {
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .sidebar a:hover {
+            background-color: #007bff;
+        }
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3>SuperAdmin</h3>
+        <a href="{{ url_for('superadmin_dashboard1') }}">Dashboard</a>
+        <!-- <a href="#"><i class="fas fa-user-injured"></i> Patients</a>-->
+        <!--<a href="#"><i class="fas fa-user-md"></i> Doctors</a>-->
+        <!--<a href="#"><i class="fas fa-calendar-alt"></i> Appointments</a>-->
+        <!--<a href="#"><i class="fas fa-pills"></i> Pharmacy</a>-->
+        <a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-user-shield"></i> Admin</a>
+        <a href="{{ url_for('cashier_dashboard') }}"><i class="fas fa-cash-register"></i> Cashier</a>
+        <a href="{{ url_for('user_dashboard') }}"><i class="fas fa-users"></i> Users</a>
+
+        <a href="#"><i class="fas fa-flask"></i> Laboratory</a>
+        <a href="#"><i class="fas fa-credit-card"></i> Billing</a>
+        <a href="#"><i class="fas fa-chart-bar"></i> Reports</a>
+        <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+        <a href="#">User Management</a>
+        <a href="#">System Settings</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-custom mb-4">
+                        <div class="card-body">
+                            <h3>Welcome, SuperAdmin!</h3>
+                            <p class="lead">Manage hospital settings, users, and oversee operations from here.</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card bg-info text-white mb-3">
+                                        <div class="card-body">
+                                            <h5>User Management</h5>
+                                            <p>Manage hospital staff roles and permissions.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-success text-white mb-3">
+                                        <div class="card-body">
+                                            <h5>System Settings</h5>
+                                            <p>Configure hospital system settings.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-warning text-white mb-3">
+                                        <div class="card-body">
+                                            <h5>Reports</h5>
+                                            <p>View and generate hospital operation reports.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Main Content -->
+     <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-custom mb-4">
+                        <div class="card-body">
+                            <h3> SuperAdmin Access Roles!</h3>
+                            <p class="lead">Manage hospital settings, users, and oversee operations from here.</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card bg-info text-white mb-3">
+                                        <div class="card-body">
+                                            <h5>Admin Dashboard</h5>
+                                            <p>Manage Admin Dashboard roles and permissions.</p>
+                                            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Admin Pannel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-success text-white mb-3">
+                                        <div class="card-body">
+                                            <h5>User Dashboard</h5>
+                                            <p>ManageUser Dashboar roles and permissions.</p>
+                                            <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary">User Pannel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-warning text-white mb-3">
+                                        <div class="card-body">
+                                            <h5>Cashier Dashboar</h5>
+                                            <p>Manage Cashier Dashboarroles and permissions.</p>
+                                            <a href="{{ url_for('cashier_dashboard') }}" class="btn btn-secondary">Cahier Pannel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="container-fluid">
+            <h2>Manage Stock</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Current Stock</h4>
+                    
+                    <table class="table table-bordered">
+                        <thead>
+                            <thead>
+                                <tr>
+                                    <th>Item UUID</th>
+                                    <th>Item Code</th>
+                                    <th>Invoice Number</th>
+                                    <th>Item Name</th>
+                                    <th>Time</th>
+                                    <th>Date</th>
+                                    <th>Cost</th>
+                                    <th> Selling Price</th>
+                                    <th>Quantity</th>
+                                    <th>Expire date</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in stock %}
+                                <tr>
+                                    <td>{{ item[0] }}</td> <!-- item_uuid -->
+                                    <td>{{ item[1] }}</td> <!-- item_code -->
+                                    <td>{{ item[2] }}</td> <!-- invoice_number -->
+                                    <td>{{ item[3] }}</td> <!-- item -->
+                                    <td>{{ item[4] }}</td> <!-- time -->
+                                    <td>{{ item[5] }}</td> <!-- date -->
+                                    <td>{{ item[6] }}</td> <!-- cost -->
+                                    <td>{{ item[7] }}</td> <!-- price -->
+                                    <td>{{ item[8] }}</td>
+                                    <td>{{ item[9] }}</td> <!-- quantity -->
+                                    
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            
+                        </tbody>
+                    </table>
+          
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- update stock-->
+    <div class="main-content">
+        <div class="container-fluid">
+            <h2>Update Stock</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Update Stock</h4>
+                    
+                    <table class="table table-bordered">
+                        <thead>
+                            <thead>
+                                <tr>
+                                    <th>Item UUID</th>
+                                    <th>Item Code</th>
+                                    <th>Invoice Number</th>
+                                    <th>Item Name</th>
+                                    <th>Time</th>
+                                    <th>Date</th>
+                                    <th>Cost</th>
+                                    <th> Selling Price</th>
+                                    <th>Quantity</th>
+                                    <th>Expire date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in stock %}
+                                <tr>
+                                    <td>{{ item[0] }}</td> <!-- item_uuid -->
+                                    <td>{{ item[1] }}</td> <!-- item_code -->
+                                    <td>{{ item[2] }}</td> <!-- invoice_number -->
+                                    <td>{{ item[3] }}</td> <!-- item -->
+                                    <td>{{ item[4] }}</td> <!-- time -->
+                                    <td>{{ item[5] }}</td> <!-- date -->
+                                    <td>{{ item[6] }}</td> <!-- cost -->
+                                    <td>{{ item[7] }}</td> <!-- price -->
+                                    <td>{{ item[8] }}</td>
+                                    <td>{{ item[9] }}</td>
+                                    <td>
+                                        <a href="{{ url_for('update_stock', item_uuid=item[0]) }}" class="btn btn-warning">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <a href="{{ url_for('delete_stock', item_uuid=item[0]) }}" class="btn btn-danger">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </a>
+                                    </td>
+                                    
+                                    
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            
+                        </tbody>
+                    </table>
+                    <a href="{{ url_for('add_stock_form') }}" class="btn btn-primary">
+                        Add stock
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- Modal for Add users -->
+<div class="main-content">
+    <div class="container-fluid">
+        <h2>Customer Management</h2>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Comment</th>
+                    <th>Email</th>
+                    <th>NIC Number</th>
+                  
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[1] }}</td> <!-- user_name -->
+                    <td>{{ user[2] }}</td> <!-- address -->
+                    <td>{{ user[3] }}</td> <!-- phone_no -->
+                    <td>{{ user[4] }}</td>
+                    <td>{{ user[7] }}</td> <!-- phone_no -->
+                    <td>{{ user[8] }}</td> <!-- comment -->
+                    <td>
+                        <a href="{{ url_for('update_user', id=user[0]) }}" class="btn btn-primary btn-sm">Update</a>
+
+                        <a href="{{ url_for('delete_user_DB', id=user[0]) }}" class="btn btn-danger btn-sm">Delete</a>
+
+
+                    </td>
+                </tr>
+                {% endfor %}
+                                
+                    </tbody>
+                </table>
+                <a href="{{ url_for('add_user_form') }}" class="btn btn-primary">
+                    Add Customer
+                </a>
+                
+            </div>
+        </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Modal for Add Items -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <h2>Manage Items</h2>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Item Name</th>
+                                <th>Company</th>
+                                <th>Dose</th>
+                                <th>Genetic Name</th>
+                                <th>Brand Name</th>
+                                <th>Specific 1</th>
+                                <th>Action</th>
+                               
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td>{{ item[0] }}</td>
+                                <td>{{ item[1] }}</td>
+                                <td>{{ item[2] }}</td>
+                                <td>{{ item[3] }}</td>
+                                <td>{{ item[4] }}</td>
+                                <td>{{ item[5] }}</td>
+                                <td>{{ item[6] }}</td>
+                                <td>
+                                    <a href="{{ url_for('update_items', uuid=item[0])}}" class="btn btn-primary btn-sm">Update</a>
+
+                                    
+                                    <a href="{{ url_for('delete_item_DB',uuid=item[0])}}" class="btn btn-danger btn-sm d-inline">Delete</a>
+                                   
+                                </td>
+                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <a href="{{ url_for('item') }}" class="btn btn-primary">
+                        Add Item
+                    </a>
+
+                       
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

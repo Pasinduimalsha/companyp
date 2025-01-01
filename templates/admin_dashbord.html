@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color:#72c02c;
+            color: #f1f1f1;
+        }
+
+        /* Content Styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        /* Card Styles */
+        .card {
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .btn-custom {
+            background-color: #72c02c;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #72c02c;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3 class="text-center text-white">Admin Panel</h3>
+        <a href="#stock" data-toggle="collapse">Stock Management</a>
+        <a href="#invoice" data-toggle="collapse">Invoice Management</a>
+        <a href="#booking" data-toggle="collapse">Booking Management</a>
+        <a href="{{ url_for('dashboard_admin') }}">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <h1 class="text-center">Admin Dashboard</h1>
+
+            <!-- Stock Management Section -->
+            <div id="stock" class="collapse show">
+                <h2>Manage Stock</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Stock List</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Item ID</th>
+                                    <th>Item Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Reorder Level</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Dynamic content here (list of stock items) -->
+                                {% for stocks in stock %}
+                                <tr>
+                                    <td>{{stocks [0]}}</td>
+                                    <td>{{stocks [1]}}</td>
+                                    <td>{{stocks [2]}}</td>
+                                    <td>{{stocks [3]}}</td>
+                                    <td>{{stocks [4]}}</td>
+                                    <td>
+                                        
+                                        <a href="{{ url_for('update_stock', id=stocks[0]) }}" class="btn btn-primary btn-sm">Update</a>
+                                        <a href="{{ url_for('delete_stock', id=stocks[0]) }}" class="btn btn-danger btn-sm">Delete</a>
+                                        
+                                      
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                <!-- Repeat for other stock items -->
+                            </tbody>
+                            <!-- Button to Open the Modal -->
+
+                        </table>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStockModal">
+                            Add Stock
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice Management Section -->
+            <div id="invoice" class="collapse">
+                <h2>Manage Invoices</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Invoice List</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Dynamic content here (list of invoices) -->
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>2024-11-20</td>
+                                    <td>$100.00</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm">View</button>
+                                    </td>
+                                </tr>
+                                <!-- Repeat for other invoices -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+           <!-- Booking Management Section -->
+<!-- Booking Management Section -->
+<div id="booking" class="collapse">
+    <h2>Manage Bookings</h2>
+    <div class="card">
+        <div class="card-body">
+            <h4>Booking List</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Purpose</th>
+                        <th>Mobile Number</th>
+                        <th>Department</th>
+                        <th>Appointment Date</th>
+                        <th>Appointment Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in booking %}
+                    <tr>
+                        <td>{{ booking[0] }}</td>
+                        <td>{{ booking[1] }}</td>
+                        <td>{{ booking[2] }}</td>
+                        <td>{{ booking[3] }}</td>
+                        <td>{{ booking[4] }}</td>
+                        <td>{{ booking[5] }}</td>
+                        <td>{{ booking[6] }}</td>
+                        <td>{{ booking[7] }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm">Update</button>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for Add Stock -->
+<div class="modal fade" id="addStockModal" tabindex="-1" aria-labelledby="addStockModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addStockModalLabel">Add New Stock</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ url_for('add_stock') }}">
+                    <div class="form-group">
+                        <label for="item-name">Item Name</label>
+                        <input type="text" class="form-control" id="item-name" name="item-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reorder-level">Reorder Level</label>
+                        <input type="number" class="form-control" id="reorder-level" name="reorder-level" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-block">Add Stock</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- Scripts for Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
