@@ -27,7 +27,7 @@ def add_user(data):
 #Function to retrive a
 def get_users():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM users_data")
+    cur.execute("SELECT * FROM users")
     rows = cur.fetchall()
     cur.close()
     return rows
