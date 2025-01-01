@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "hospital_management_system",
+            "group": "Development",
+            "database": "hospital_management_system",
+            "username": "root",
+            "connectionTimeout": 10000,
+            "askForPassword": true
+        }
+    ]
+}
