@@ -4,7 +4,7 @@ from flask_mysqldb import MySQL
 from flask import request
 
 # Initialize Flask and MySQL
-app = Flask(__name__)
+app = Flask(__name__)  
 app.config.from_object('config.Config')  # Load configuration
 mysql = MySQL(app)
 

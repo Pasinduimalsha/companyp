@@ -1,6 +1,6 @@
-from flask_mysqldb import MySQL
+import pymysql
 
-mysql=None
+
 #sele
 '''''
 #insert user
@@ -26,7 +26,13 @@ def add_user(data):
 
 #Function to retrive a
 def get_users():
-    cur = mysql.connection.cursor()
+    connection  = pymysql.connect(
+        host="localhost",
+        user="root",
+        password="@Pasiya12",
+        database="hospital_management_system"
+    )
+    cur = connection.cursor()
     cur.execute("SELECT * FROM users")
     rows = cur.fetchall()
     cur.close()
@@ -39,21 +45,21 @@ def update_user(user_id, data):
     phone_no = data.get('phone_no')
     comment = data.get('comment', '')
     
-    cur = mysql.connection.cursor()
+    cur = pymysql.connection.cursor()
     cur.execute("""
         UPDATE users_data 
         SET user_name = %s, address = %s, phone_no = %s, comment = %s 
         WHERE user_id = %s
     """, (user_name, address, phone_no, comment, user_id))
-    mysql.connection.commit()
+    pymysql.connection.commit()
     cur.close()
     return {"message": "User updated successfully"}
 
 #delete user
 def delete_user(user_id):
-    cur=mysql.connection.cursor()
+    cur=pymysql.connection.cursor()
     cur.execute("DELETE FROM users_data WHERE user_id = %s", [user_id])
-    mysql.connection.commit()
+    pymysql.connection.commit()
     cur.close()
     return {"message": "User deleted successfully"}
 
